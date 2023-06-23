@@ -17,6 +17,8 @@ export class AgregarDialogComponent implements OnInit {
 
   constructor() { }
 
+  
+
   ngOnInit(): void {
   }
 

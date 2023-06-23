@@ -1,43 +1,70 @@
-
-<p-dialog [(visible)]="agregarDialog" [style]="{width: '600px'}" [draggable]="false" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="agregarDialog" [style]="{width: '800px'}" [draggable]="false" [modal]="true"
+    styleClass="p-fluid">
 
 
     <ng-template pTemplate="content">
         <div class="grid mb-3">
             <div class="col">
                 <label for="nrc">NRC</label>
+                <input pInputText pKeyFilter="int" class="mt-2"/>
             </div>
             <div class="col">
                 <label for="curso">Curso</label>
+                <div class="card mt-2">
+                    <p-dropdown placeholder="Seleccione el curso" [editable]="true" optionLabel="name"></p-dropdown>
+                </div>
             </div>
         </div>
         <div class="grid mb-3">
             <div class="col">
                 <label for="codigo">Código</label>
+                <div class="card mt-2">
+                    <p-dropdown placeholder="Seleccione el código" [editable]="true" optionLabel="name"></p-dropdown>
+                </div>
             </div>
             <div class="col">
                 <label for="profesor">Profesor</label>
+                <div class="card mt-2">
+                    <p-dropdown placeholder="Seleccione el profesor" [editable]="true" optionLabel="name"></p-dropdown>
+                </div>
             </div>
         </div>
 
         <div class="grid mb-3">
-            <div class="col"> 
+            <div class="col">
                 <label for="dias">Días</label>
+                <div class="card mt-2">
+                    <p-dropdown placeholder="Seleccione el día" [editable]="true" optionLabel="name"></p-dropdown>
+                </div>
             </div>
-            <div class="col"> 
+            <div class="col">
                 <label for="hora_entrada">Hora Entrada</label>
+                <div class="card mt-2">
+                    <p-dropdown placeholder="Seleccione hora de entrada" [editable]="true" optionLabel="name"></p-dropdown>
+                </div>
             </div>
-            <div class="col"> 
+            <div class="col">
                 <label for="hora_salida">Hora Salida</label>
+                <div class="card mt-2">
+                    <p-dropdown placeholder="Seleccione hora de salida" [editable]="true" optionLabel="name"></p-dropdown>
+                </div>
             </div>
         </div>
+
+        <div class="grid justify-content-center">
+            <button pButton pRipple type="button" icon="pi pi-plus"
+                class="p-button-outlined p-button-rounded my-3">
+            </button>
+        </div>
+
+
 
     </ng-template>
 
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text p-button-danger"
             (click)="cerrarDialog()"></button>
-        <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text"
+        <button pButton pRipple  type="button" label="Guardar" icon="pi pi-check" class="p-button-text"
             (click)="guardarCurso()"></button>
     </ng-template>
 </p-dialog>
