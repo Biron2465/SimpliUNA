@@ -3,26 +3,33 @@
 
 
     <ng-template pTemplate="content">
-        <div class="field mb-2">
-            <label for="nrc">NRC</label>
+        <div class="grid mb-3">
+            <div class="col">
+                <label for="nrc">NRC</label>
+            </div>
+            <div class="col">
+                <label for="curso">Curso</label>
+            </div>
         </div>
-        <div class="field">
-            <label for="curso">Curso</label>
+        <div class="grid mb-3">
+            <div class="col">
+                <label for="codigo">Código</label>
+            </div>
+            <div class="col">
+                <label for="profesor">Profesor</label>
+            </div>
         </div>
-        <div class="field">
-            <label for="codigo">Código</label>
-        </div>
-        <div class="field">
-            <label for="profesor">Profesor</label>
-        </div>
-        <div class="field">
-            <label for="dias">Días</label>
-        </div>
-        <div class="field">
-            <label for="hora_entrada">Hora Entrada</label>
-        </div>
-        <div class="field">
-            <label for="hora_salida">Hora Salida</label>
+
+        <div class="grid mb-3">
+            <div class="col"> 
+                <label for="dias">Días</label>
+            </div>
+            <div class="col"> 
+                <label for="hora_entrada">Hora Entrada</label>
+            </div>
+            <div class="col"> 
+                <label for="hora_salida">Hora Salida</label>
+            </div>
         </div>
 
     </ng-template>
