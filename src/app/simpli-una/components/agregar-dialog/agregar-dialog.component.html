@@ -1,8 +1,8 @@
-<p-dialog [(visible)]="agregarDialog" [style]="{width: '800px'}" [draggable]="false" [modal]="true"
+<p-dialog [(visible)]="agregarDialog" [style]="{width: '900px'}" [draggable]="false" [modal]="true"
     styleClass="p-fluid">
 
 
-    <ng-template pTemplate="content">
+    <ng-template pTemplate="content"  [responsive]="true">
         <div class="grid mb-3">
             <div class="col">
                 <label for="nrc">NRC</label>
@@ -33,8 +33,8 @@
         <div class="grid mb-3">
             <div class="col">
                 <label for="dias">Días</label>
-                <div class="card mt-2">
-                    <p-dropdown placeholder="Seleccione el día" [editable]="true" optionLabel="name"></p-dropdown>
+                <div class="card mt-2 ">
+                    <p-dropdown appendTo="body" [options]="dias" [(ngModel)]="selectedDia" placeholder="Seleccione el día" [editable]="true" ></p-dropdown>
                 </div>
             </div>
             <div class="col">

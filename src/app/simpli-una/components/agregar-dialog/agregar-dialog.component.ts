@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Curso } from '../../interfaces/curso.interface';
+import { Dia } from '../../interfaces/dias.interface';
+
+
 
 @Component({
   selector: 'app-agregar-dialog',
@@ -14,12 +17,13 @@ export class AgregarDialogComponent implements OnInit {
   agregarDialog: boolean = false;
 
   curso !: Curso
+  dias : Dia[] = Object.values(Dia);
+  selectedDia: Dia | undefined;
 
   constructor() { }
 
-  
-
   ngOnInit(): void {
+    
   }
 
   cargarDataEmit(){
