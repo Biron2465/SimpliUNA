@@ -21,9 +21,9 @@ export class AgregarDialogComponent implements OnInit {
   dias: Dia[] = Object.values(Dia);
   selectedDia: Dia | undefined;
   profesores: Profesor[] = [{ nombre: 'Carlos Loria' },
-  { nombre: 'Maikol Guzman' },
-  { nombre: 'Olger Achio' },
-  { nombre: 'Juan de Dios' }]
+                            { nombre: 'Maikol Guzman' },
+                            { nombre: 'Olger Achio' },
+                            { nombre: 'Juan de Dios' }]
   selectedProfesor: Profesor | undefined
 
   constructor() { }
