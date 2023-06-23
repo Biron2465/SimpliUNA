@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Curso } from '../../interfaces/curso.interface';
 import { Dia } from '../../interfaces/dias.interface';
+import { Profesor } from '../../interfaces/profesor.interface';
 
 
 
@@ -12,29 +13,34 @@ import { Dia } from '../../interfaces/dias.interface';
 export class AgregarDialogComponent implements OnInit {
 
   @Output() refreshData = new EventEmitter<void>();
-  
+
   submitted !: boolean;
   agregarDialog: boolean = false;
 
   curso !: Curso
-  dias : Dia[] = Object.values(Dia);
+  dias: Dia[] = Object.values(Dia);
   selectedDia: Dia | undefined;
+  profesores: Profesor[] = [{ nombre: 'Carlos Loria' },
+  { nombre: 'Maikol Guzman' },
+  { nombre: 'Olger Achio' },
+  { nombre: 'Juan de Dios' }]
+  selectedProfesor: Profesor | undefined
 
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
-  cargarDataEmit(){
+  cargarDataEmit() {
     this.refreshData.emit();
   }
 
-  abrirDialog(){
+  abrirDialog() {
     this.agregarDialog = true;
   }
 
-  agregarCursoDialog(){
+  agregarCursoDialog() {
     this.submitted = false;
     this.agregarDialog = true;
   }

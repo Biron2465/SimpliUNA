@@ -25,7 +25,7 @@
             <div class="col">
                 <label for="profesor">Profesor</label>
                 <div class="card mt-2">
-                    <p-dropdown placeholder="Seleccione el profesor" [editable]="true" optionLabel="name"></p-dropdown>
+                    <p-dropdown appendTo="body" [options]="profesores" [(ngModel)]="selectedProfesor" placeholder="Seleccione el profesor" [editable]="true" optionLabel="nombre"></p-dropdown>
                 </div>
             </div>
         </div>
