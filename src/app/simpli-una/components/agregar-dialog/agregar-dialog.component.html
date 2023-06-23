@@ -1,0 +1,36 @@
+
+<p-dialog [(visible)]="agregarDialog" [style]="{width: '600px'}" [draggable]="false" [modal]="true" styleClass="p-fluid">
+
+
+    <ng-template pTemplate="content">
+        <div class="field mb-2">
+            <label for="nrc">NRC</label>
+        </div>
+        <div class="field">
+            <label for="curso">Curso</label>
+        </div>
+        <div class="field">
+            <label for="codigo">Código</label>
+        </div>
+        <div class="field">
+            <label for="profesor">Profesor</label>
+        </div>
+        <div class="field">
+            <label for="dias">Días</label>
+        </div>
+        <div class="field">
+            <label for="hora_entrada">Hora Entrada</label>
+        </div>
+        <div class="field">
+            <label for="hora_salida">Hora Salida</label>
+        </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text p-button-danger"
+            (click)="cerrarDialog()"></button>
+        <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text"
+            (click)="guardarCurso()"></button>
+    </ng-template>
+</p-dialog>

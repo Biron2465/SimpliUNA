@@ -8,6 +8,7 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablaCursosRegistradosComponent } from './components/tabla-cursos-registrados/tabla-cursos-registrados.component';
 import { TabViewHorariosGeneradosComponent } from './components/tab-view-horarios-generados/tab-view-horarios-generados.component';
+import { AgregarDialogComponent } from './components/agregar-dialog/agregar-dialog.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TabViewHorariosGeneradosComponent } from './components/tab-view-horario
     InicioComponent,
     GeneradorDeHorariosComponent,
     TablaCursosRegistradosComponent,
-    TabViewHorariosGeneradosComponent
+    TabViewHorariosGeneradosComponent,
+    AgregarDialogComponent
   ],
   imports: [
     CommonModule,

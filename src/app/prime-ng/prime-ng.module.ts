@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {TabViewModule} from 'primeng/tabview';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -11,7 +12,8 @@ import {TabViewModule} from 'primeng/tabview';
   exports:[
     ButtonModule,
     TableModule,
-    TabViewModule
+    TabViewModule,
+    DialogModule
   ]
 })
 export class PrimeNgModule { }
