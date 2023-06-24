@@ -1,8 +1,8 @@
-<p-dialog [(visible)]="agregarDialog" [style]="{width: '900px'}" [draggable]="false" [modal]="true"
+<p-dialog header="Agregar Curso" [(visible)]="agregarDialog" [style]="{width: '50vw'}" [draggable]="false" [modal]="true"  [responsive]="true"
     styleClass="p-fluid">
 
 
-    <ng-template pTemplate="content"  [responsive]="true">
+    <ng-template pTemplate="content" >
         <div class="grid mb-3">
             <div class="col">
                 <label for="nrc">NRC</label>
@@ -30,23 +30,22 @@
             </div>
         </div>
 
-        <div class="grid mb-3">
+        <hr>
+
+        <div class="grid mt-3 mb-3">
             <div class="col">
-                <label for="dias">Días</label>
                 <div class="card mt-2 ">
-                    <p-dropdown appendTo="body" [options]="dias" [(ngModel)]="selectedDia" placeholder="Seleccione el día" [editable]="true" ></p-dropdown>
+                    <p-dropdown appendTo="body" [options]="dias" [(ngModel)]="selectedDia" placeholder="Dias" [editable]="true" ></p-dropdown>
                 </div>
             </div>
             <div class="col">
-                <label for="hora_entrada">Hora Entrada</label>
                 <div class="card mt-2">
-                    <p-dropdown placeholder="Seleccione hora de entrada" [editable]="true" optionLabel="name"></p-dropdown>
+                    <p-dropdown placeholder="Hora Entrada" [editable]="true" optionLabel="name"></p-dropdown>
                 </div>
             </div>
             <div class="col">
-                <label for="hora_salida">Hora Salida</label>
                 <div class="card mt-2">
-                    <p-dropdown placeholder="Seleccione hora de salida" [editable]="true" optionLabel="name"></p-dropdown>
+                    <p-dropdown placeholder="Hora Salida" [editable]="true" optionLabel="name"></p-dropdown>
                 </div>
             </div>
         </div>
@@ -57,14 +56,13 @@
             </button>
         </div>
 
-
+        
 
     </ng-template>
 
     <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text p-button-danger"
-            (click)="cerrarDialog()"></button>
-        <button pButton pRipple  type="button" label="Guardar" icon="pi pi-check" class="p-button-text"
-            (click)="guardarCurso()"></button>
+        <button pButton pRipple  type="button" label="Guardar" icon="pi pi-check" class="p-button p-button-outlined p-button-rounded" 
+            (click)="guardarCurso()">
+        </button>
     </ng-template>
 </p-dialog>
