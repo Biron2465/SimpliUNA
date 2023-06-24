@@ -10,7 +10,7 @@ export class CursosRegistradosService {
   public cursos: Curso[] = [
 
     {
-      NRC: '40090',
+      NRC: 40090,
       nombre: 'Desarrollo de Plataformas Moviles',
       codigo: 'EIF411',
       dias: [
@@ -28,7 +28,7 @@ export class CursosRegistradosService {
       profesor: {nombre:'Carlos Loria'}
     },
     {
-      NRC: '40090',
+      NRC: 40090,
       nombre: 'Desarrollo de Plataformas Moviles',
       codigo: 'EIF411',
       dias: [
@@ -52,6 +52,23 @@ export class CursosRegistradosService {
   ]
 
   constructor() { }
+
+  get getCursos(){
+    return [...this.cursos];
+  }
+
+
+  agregarCurso(curso:Curso){
+    this.cursos.push(curso);
+  }
+
+  eliminarCurso(NRC:number){
+    this.cursos.forEach((curso,index)=>{
+      if(curso.NRC == NRC){
+        this.cursos.splice(index,1);
+      }
+    })
+  }
 }
 
 /*

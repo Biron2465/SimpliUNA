@@ -1,68 +1,119 @@
-<p-dialog header="Agregar Curso" [(visible)]="agregarDialog" [style]="{width: '50vw'}" [draggable]="false" [modal]="true"  [responsive]="true"
-    styleClass="p-fluid">
+<p-dialog header="Agregar Curso" [(visible)]="agregarDialog" [style]="{width: '50vw'}" [draggable]="false"
+    [modal]="true" [responsive]="true">
 
+    <form autocomplete="off" [formGroup]="agregarCursoFormulario">
 
-    <ng-template pTemplate="content" >
-        <div class="grid mb-3">
-            <div class="col">
-                <label for="nrc">NRC</label>
-                <input pInputText pKeyFilter="int" class="mt-2"/>
+        <div class="formgrid grid">
+            <div class="field col-12 md:col-6 sm:col-12">
+                <label for="NRC">NRC</label>
+                <input formControlName="NRC" id="NRC" type="number" placeholder="Ej: 40090"
+                    class="text-base text-color surface-overlay border-solid surface-border border-round outline-none focus:border-primary w-full mt-2"
+                    style="padding: 0.9rem;">
             </div>
-            <div class="col">
-                <label for="curso">Curso</label>
+            <div class="field col-12 md:col-6 sm:col-12">
+                <label for="NOMBRECURSO">Nombre del Curso</label>
                 <div class="card mt-2">
-                    <p-dropdown placeholder="Seleccione el curso" [editable]="true" optionLabel="name"></p-dropdown>
+                    <p-dropdown inputId="NOMBRECURSO" appendTo="body" [autoDisplayFirst]="false"
+                        [formControl]="nuevoNombre" placeholder="Seleccione el curso" [editable]="true"></p-dropdown>
+                </div>
+            </div>
+            <div class="field col-12 md:col-6 sm:col-12">
+                <label for="CODIGOCURSO">Código</label>
+                <div class="card mt-2">
+                    <p-dropdown inputId="CODIGOCURSO" appendTo="body" [autoDisplayFirst]="false"
+                        [formControl]="nuevoCodigo" placeholder="Seleccione el código" [editable]="true"></p-dropdown>
+                </div>
+            </div>
+            <div class="field col-12 md:col-6 sm:col-12" style="width: 50%;">
+                <label for="NOMRBEPROFESOR">Profesor</label>
+                <div class="card mt-2">
+                    <p-dropdown inputId="NOMRBEPROFESOR" appendTo="body" [autoDisplayFirst]="false"
+                        [options]="profesores" [formControl]="nuevoProfesor" [(ngModel)]="selectedProfesor"
+                        placeholder="Seleccione el profesor" [editable]="true">
+                        <ng-template let-profesor pTemplate="item">
+                            {{ profesor.nombre }}
+                        </ng-template>
+                    </p-dropdown>
                 </div>
             </div>
         </div>
-        <div class="grid mb-3">
-            <div class="col">
-                <label for="codigo">Código</label>
-                <div class="card mt-2">
-                    <p-dropdown placeholder="Seleccione el código" [editable]="true" optionLabel="name"></p-dropdown>
-                </div>
-            </div>
-            <div class="col">
-                <label for="profesor">Profesor</label>
-                <div class="card mt-2">
-                    <p-dropdown appendTo="body" [options]="profesores" [(ngModel)]="selectedProfesor" placeholder="Seleccione el profesor" [editable]="true" optionLabel="nombre"></p-dropdown>
-                </div>
-            </div>
-        </div>
+
 
         <hr>
 
-        <div class="grid mt-3 mb-3">
-            <div class="col">
-                <div class="card mt-2 ">
-                    <p-dropdown appendTo="body" [options]="dias" [(ngModel)]="selectedDia" placeholder="Dias" [editable]="true" ></p-dropdown>
-                </div>
+        <div class="formgrid p-fluid grid mt-5">
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-dropdown inputId="DIAS" [autoDisplayFirst]="false" [formControl]="nuevoDia" [options]="dias"
+                        [(ngModel)]="diaSeleccionado" appendTo="body"></p-dropdown>
+                    <label for="DIAS">Dias</label>
+                </span>
             </div>
-            <div class="col">
-                <div class="card mt-2">
-                    <p-dropdown placeholder="Hora Entrada" [editable]="true" optionLabel="name"></p-dropdown>
-                </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-calendar [formControl]="nuevoHora_Entrada" [(ngModel)]="horaEntrada" [timeOnly]="true"
+                        [hourFormat]="'24'" inputId="HORAENTRADA"></p-calendar>
+                    <label for="HORAENTRADA">Hora de entrada</label>
+                </span>
             </div>
-            <div class="col">
-                <div class="card mt-2">
-                    <p-dropdown placeholder="Hora Salida" [editable]="true" optionLabel="name"></p-dropdown>
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <p-calendar [formControl]="nuevoHora_Salida" [(ngModel)]="horaSalida" [timeOnly]="true"
+                        [hourFormat]="'24'" inputId="HORASALIDA"></p-calendar>
+                    <label for="HORASALIDA">Hora de Salida</label>
+                </span>
+            </div>
+
+
+            <div class="field col-12 ">
+                <div class="mt-2 flex justify-content-center">
+                    <button pButton pRipple (click)="agregarHorario()" type="button" icon="pi pi-plus"
+                        class="p-button-outlined p-button-rounded my-3">
+                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="grid justify-content-center">
-            <button pButton pRipple type="button" icon="pi pi-plus"
-                class="p-button-outlined p-button-rounded my-3">
+        <div class="grid">
+            <div class="col">
+
+                <p-table [value]="diasArr.controls" styleClass="p-datatable-striped">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Dia(s)</th>
+                            <th>Hora de Entrada</th>
+                            <th>Hora de Salida</th>
+                            <th style="width: 5rem"></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-i="rowIndex">
+                        <tr>
+
+                            <td>{{diasArr.controls[i].value }}</td>
+                            <td>{{horaEntradaArr.controls[i].value | date: 'HH:mm'}}</td>
+                            <td>{{horaSalidaArr.controls[i].value | date: 'HH:mm'}}</td>
+
+                            <td>
+                                <button type="button" pButton pRipple icon="pi pi-trash"
+                                    class="p-button-danger p-button-outlined p-button-rounded"
+                                    (click)="borrarHorario(i)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+        <div class="mt-2 flex justify-content-end">
+            <button pButton pRipple type="button" label="Guardar" icon="pi pi-check"
+                class="p-button p-button-outlined p-button-rounded" (click)="guardarCurso()">
             </button>
+
         </div>
 
-        
+    </form>
 
-    </ng-template>
-
-    <ng-template pTemplate="footer">
-        <button pButton pRipple  type="button" label="Guardar" icon="pi pi-check" class="p-button p-button-outlined p-button-rounded" 
-            (click)="guardarCurso()">
-        </button>
-    </ng-template>
 </p-dialog>

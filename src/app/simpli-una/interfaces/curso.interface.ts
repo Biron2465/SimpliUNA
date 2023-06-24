@@ -2,7 +2,7 @@
 import { Profesor } from "./profesor.interface";
 
 export interface Curso {
-    NRC: string;
+    NRC: number;
     nombre: string;
     codigo: string;
     dias: string[];
